@@ -1,2 +1,26 @@
 @import '../app/dashboard/dashboard.less';
 @import '../app/login/login.less';
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 0 100%; }
+}
+
+.animate-area	{ 
+	width: inherit; 
+	height: 100%;
+	background-image: url('https://i.ytimg.com/vi/LCs0ZEHyQVg/maxresdefault.jpg'); 
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+
+	animation: animatedBackground 6s linear infinite;
+	
+	
+}
+
+.container {
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
