@@ -6,7 +6,12 @@
     .run(appRun);
 
   /* @ngInject */
-  function appRun(routerHelper) {
+  function appRun(routerHelper, $rootScope, $auth, $window) {
+    // check if user is already logged in
+    $rootScope.isAuthenticated = $auth.isAuthenticated();
+    if ($rootScope.isAuthenticated) {
+        $rootScope.currentUser = JSON.parse($window.localStorage.userInfo);
+    }
     var otherwise = '/404';
     routerHelper.configureStates(getStates(), otherwise);
   }

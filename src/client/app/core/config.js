@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[dianaFront Error] ',
-    appTitle: 'dianaFront'
+    appErrorPrefix: '[DIANA Error] ',
+    appTitle: 'DIANA'
   };
 
   core.value('config', config);

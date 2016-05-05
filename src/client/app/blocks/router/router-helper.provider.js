@@ -26,7 +26,6 @@
     };
 
     this.$get = RouterHelper;
-    RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'];
     /* @ngInject */
     function RouterHelper($location, $rootScope, $state, logger) {
       var handlingStateChangeError = false;
@@ -84,9 +83,31 @@
       }
 
       function init() {
+        handleRoutingStart();
         handleRoutingErrors();
         updateDocTitle();
       }
+
+      function handleRoutingStart() {
+            // Redirect to default route when trying to directly access authenticated route in the url e.g /login
+            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
+                var authState = toState.authenticate;
+                if (authState &&  !$rootScope.isAuthenticated) {
+                    console.log('login');
+                    $location.path('/login');
+                    // don't add to history
+                    $location.replace();
+                } else if (!authState && authState !== undefined && $rootScope.isAuthenticated && toState.name !== '404') {
+                    $location.path('/');
+
+                    // remove available query params
+                    $location.search('');
+
+                    // don't add to history
+                    $location.replace();
+                }
+            });
+        }
 
       function getStates() { return $state.get(); }
 

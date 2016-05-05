@@ -9,6 +9,8 @@ var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var request = require('request');
+var moment = require('moment');
+var jwt = require('jwt-simple');
 
 var environment = process.env.NODE_ENV;
 
@@ -47,13 +49,29 @@ app.post('/auth/facebook', function (req, res) {
         request.get({url: graphApiUrl, qs: accessToken, json: true}, function (err, response, profile) {
             if (response.statusCode !== 200) {
                 return res.status(500).send({message: profile.error.message});
+            } else {
+                var token = createToken(profile);
+                res.send({ token: token, data: profile });
             }
-            res.send(profile);
 
         });
     });
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | Generate JSON Web Token
+ |--------------------------------------------------------------------------
+ */
+function createToken(user) {
+  var payload = {
+    exp: moment().add(14, 'days').unix(),
+    iat: moment().unix(),
+    sub: user._id
+  };
+
+  return jwt.encode(payload, '339dbe1b587e60735d39373b0334803d');
+}
 
 switch (environment) {
     case 'build':

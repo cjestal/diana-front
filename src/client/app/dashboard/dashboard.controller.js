@@ -6,9 +6,20 @@
     .controller('DashboardController', DashboardController);
 
     /* @ngInject */
-    function DashboardController($timeout) {
+    function DashboardController($timeout, $auth, $rootScope, $state, $window) {
         var vm = this;
         activate();
+        vm.logout = logout;
+
+        function logout() {
+            $auth.logout();
+            $rootScope.isAuthenticated = $auth.isAuthenticated();
+
+            // redirect to login page
+            $state.go('login');
+            delete $window.localStorage.userInfo;
+        }
+
 
         function activate() {
             vm.questions = {
