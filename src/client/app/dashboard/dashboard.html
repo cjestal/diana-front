@@ -1,12 +1,31 @@
-<div input-field>
-    <input type="text" ng-model="dummyInputs.inputFieldInput" length="150">
-    <label>Input label</label>
+<!-- <div><img src="/images/sampleImage.jpg" alt=""></div> -->
+<div class="row">
+ <div class="col s12">
+    <div class="card grey lighten-5">
+       <div class="card-content">
+         <h1>{{vm.questions.question}}</h1>
+       </div>
+       <div class="card-action" ng-switch="vm.questions.answerType">
+            <div ng-switch-when="boolean">
+                  <button class="btn waves-effect waves-light blue-grey">Yes</button>
+                <button class="btn waves-effect waves-light red">No</button>
+            </div>
+            <div ng-switch-when="inputText">
+                <input type="text">
+            </div>
+             <div ng-switch-when="date">
+                <input type="text">
+            </div>
+       </div>
+    </div>
+ </div>
 </div>
-<div input-field>
-    <input type="text" ng-model="dummyInputs.inputFieldInput" length="150">
-    <label>Input label</label>
-</div>
-<div input-field>
-    <input type="text" ng-model="dummyInputs.inputFieldInput" length="150">
-    <label>Input label</label>
+<div class="row">
+  <div class="col s12 m6 l3" ng-repeat="notification in vm.notifications">
+    <div class="card  yellow accent-1">
+       <div class="card-content">
+          <p>{{notification.content}}</p>
+       </div>
+    </div>
+ </div>
 </div>

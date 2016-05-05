@@ -6,10 +6,35 @@
     .controller('DashboardController', DashboardController);
 
     /* @ngInject */
-    function DashboardController() {
+    function DashboardController($timeout) {
         var vm = this;
+        activate();
 
-        vm.title = 'Dashboard';
+        function activate() {
+            vm.questions = {
+                question: "How are you",
+                answerType: 'boolean'
+            }
+            vm.notifications = [
+            {
+                content: 'Click the image to reveal more information.'
+            },
+            {
+                content: 'Click the image to reveal more information. Click the image to reveal more information.'
+            }, {
+                content: 'Click the image to reveal more information.Click the image to reveal more information. the image to reveal more information.t2'
+            }, {
+                content: 'Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.'
+            }, {
+                content: 'Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.'
+            }, {
+                content: 'Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.'
+            }, {
+                content: 'Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.Click the image to reveal more information.'
+            }
+            ]
+        }
+
 
     }
 })();

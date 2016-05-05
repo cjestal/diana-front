@@ -49,7 +49,6 @@ app.post('/auth/facebook', function (req, res) {
                 return res.status(500).send({message: profile.error.message});
             }
             res.send(profile);
-            // res.send("https://graph.facebook.com/v2.3/" + profile.id + "/hometown");
 
         });
     });
