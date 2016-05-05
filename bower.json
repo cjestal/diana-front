@@ -27,7 +27,8 @@
     "toastr": "^2.1.2",
     "angular-animate": "^1.5.3",
     "angular-bootstrap": "^1.2.5",
-    "angular-materialize": "^0.1.4"
+    "angular-materialize": "^0.1.4",
+    "satellizer": "^0.14.0"
   },
   "resolutions": {
     "angular": "1.5.3"

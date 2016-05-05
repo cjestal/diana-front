@@ -4,7 +4,8 @@
   angular.module('app', [
     'app.core',
     'app.dashboard',
-    'app.layout'
+    'app.layout',
+    'app.login'
   ]);
 
 })();
