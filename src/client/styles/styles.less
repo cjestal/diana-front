@@ -9,7 +9,7 @@
 .animate-area	{ 
 	width: inherit; 
 	height: 100%;
-	background-image: url('https://i.ytimg.com/vi/LCs0ZEHyQVg/maxresdefault.jpg'); 
+	background-image: url('http://pic.1fotonin.com/data/wallpapers/144/WDF_1857837.jpg'); 
 	background-position: 0px 0px;
 	background-repeat: repeat-x;
 
@@ -23,4 +23,46 @@
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
+}
+
+p{
+  color: lime; 
+  font-family: "Courier";
+  font-size: 20px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 4s steps(60, end); 
+}
+
+p:nth-child(2){
+  animation: type2 8s steps(60, end);
+}
+
+p a{
+  color: lime;
+  text-decoration: none;
+}
+
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes type{ 
+  from { width: 0; } 
+} 
+
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; } 
+} 
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
+::selection{
+  background: black;
 }
